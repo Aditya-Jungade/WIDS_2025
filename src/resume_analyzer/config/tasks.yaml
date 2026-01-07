@@ -1,0 +1,54 @@
+ats_optimization_task: 
+  description: > 
+    Analyze the provided {resume} against the {job_description}. 
+    1. Identify missing keywords and hard skills that are critical for passing
+    ATS filters. 
+    2. Check for formatting issues (headers, columns, fonts) that might confuse
+    parsers. 
+    3. Calculate a rough "match score" based on keyword density and relevance. 
+    4. Provide specific, actionable suggestions to rephrase bullet points
+    to include industry-standard terminology found in the job description. 
+  expected_output: >
+    An ATS Compliance Report containing a keyword gap analysis, a formatting
+    check, and a rewritten version of the top 3 bullet points optimized for
+    the specific algorithm criteria. 
+  agent: specialist
+
+technical_evaluation_task:
+  description: > 
+    Conduct a deep-dive technical review of the {resume} based on the requirements
+    outlined in the {job_description}. 
+    1. Verify if the candidate's project descriptions demonstrate actual depth
+    versus surface-level knowledge. 
+    2. Assess the modern relevance of the tech stack used. 
+    3. Identify any technical red flags (e.g., outdated tools for a modern
+    role, inconsistencies in timeline vs expertise claims). 
+    4. Rate the candidate's technical proficiency level (Junior/Mid/Senior/
+    Principal) relative to the specific needs of the role. 
+  expected_output: > 
+    A Technical Competency Assessment that distinguishes between "claimed 
+    skills" and "evidenced skills," highlighting specific strengths and weaknesses
+    regarding the required tools and domain knowledge. 
+  agent: expert
+
+recruiter_screening_task: 
+  description: > 
+    Evaluate the {resume} for soft skills, cultural fit, and behavioral indicators
+    relevant to the {job_description}. 
+    1. Analyze the career trajectory: Does it show growth, stability, or erratic
+    jumping? 
+    2. Look for "soft skill" keywords (leadership, collaboration, communication) 
+    backed by results. 
+    3. Assess the "human" tone of the resume-does it sound robotic or like 
+    a collaborative team member? 
+    4. Determine id the candidate's stated goals align with the implied culture
+    of the company described. 
+  expected_output: > 
+    A Recruiter Screening Summary including a "Cultual Fit" rating, a list
+    of behavioral interview questions to ask based on the resume's weak points, 
+    and a final recommendation on whether to proceed to a phone screen.
+  agent: recruiter
+  context: 
+    - ats_optimization_task
+    - technical_evaluation_task
+  output_file: output/final_candidate_review.md
